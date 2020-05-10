@@ -32,6 +32,13 @@ class CategoriesVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         return collectionView
     }()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.addSubview(collectionView)
+        navigationItem.title = "News Feed"
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data.count
     }
@@ -39,17 +46,32 @@ class CategoriesVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
         cell.setUp(with: data[indexPath.row])
+        cell.backgroundColor = .blue
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell: CategoryCell = collectionView.cellForItem(at: indexPath) as! CategoryCell
-        cell.backgroundColor = .blue
+        cell.backgroundColor = .green
+        print("selected item in row \(indexPath.row)")
+        let categorySelection = data[indexPath.row]
+        NetworkAPI.shared.getArticles(category: categorySelection){ result in
+                switch result {
+                case let .success(articles):
+                    let nextView = ArticleVC()
+                    nextView.articles = articles
+                    nextView.category = self.data[indexPath.row]
+                    
+                    self.navigationController?.pushViewController(nextView, animated: true)
+                    
+                case let .failure(error):
+                    print(error)
+                }
+                print(result)
+                
+            }
+            
+        }
+        
+        
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.addSubview(collectionView)
-        navigationItem.title = "News Feed"
-    }
-}

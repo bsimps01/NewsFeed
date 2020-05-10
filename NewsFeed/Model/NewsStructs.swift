@@ -8,12 +8,12 @@
 
 import Foundation
 
-public struct Source: Decodable {
+public struct Source: Codable {
     let id: String?
     let name: String?
 }
 
-public struct Article: Decodable {
+public struct Article: Codable {
     let source: Source
     let author: String?
     let title: String?
@@ -23,16 +23,16 @@ public struct Article: Decodable {
     let urlToImage: String?
 }
 
-public struct NewsSource: Decodable {
+public struct NewsSource: Codable {
     let name: String?
     let category: String?
 }
 
-public struct AllNewsSources: Decodable {
+public struct AllNewsSources: Codable {
     let sources: [NewsSource]
 }
 
-public struct ArticleList: Decodable {
+public struct ArticleList: Codable {
     public var articles: [Article]
 }
 
