@@ -7,77 +7,70 @@
 //
 
 import UIKit
+import Kingfisher
 
-class ArticleVC: UITableViewCell {
-
-     let background : UIView = {
-            let background = UIView()
-            background.translatesAutoresizingMaskIntoConstraints = false
-            return background
-        }()
+class ArticleVC: UIViewController {
         
-        static var identifier = "ArticleCell"
+    static var identifier = "ArticleCell"
     
-        var currentArticle : Article!
-        
-        override func awakeFromNib() {
-            super.awakeFromNib()
-            // Initialization code
+    let networkAPI = NetworkAPI()
+    let section = UITableView()
+    var currentArticle : [Article] = [] {
+        didSet {
+            section.reloadData()
         }
-        
-        override func setSelected(_ selected: Bool, animated: Bool) {
-            super.setSelected(selected, animated: animated)
-            
-        }
-        override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-            super.init(style: style, reuseIdentifier: reuseIdentifier)
-            self.setup()
-        }
-        
-        required init?(coder aDecoder: NSCoder) {
-            super.init(coder: aDecoder)
-            self.setup()
-            
-        }
-        
-        func setup() {
-            self.contentView.addSubview(background)
-            background.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 10).isActive = true
-            background.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
-            background.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
-            background.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
-            
-        }
-        func createImage(item: Article) {
-            textLabel?.text = item.title
-            
-            imageView?.image = UIImage(named: item.urlToImage!)
-            imageView?.translatesAutoresizingMaskIntoConstraints = false
-            imageView?.heightAnchor.constraint(equalToConstant: 60).isActive = true
-            imageView?.widthAnchor.constraint(equalToConstant: 60).isActive = true
-            imageView?.centerYAnchor.constraint(equalTo: background.centerYAnchor).isActive = true
-            
-            textLabel?.translatesAutoresizingMaskIntoConstraints = false
-            textLabel?.centerYAnchor.constraint(equalTo: background.centerYAnchor).isActive = true
-            textLabel?.leadingAnchor.constraint(equalTo: imageView!.trailingAnchor, constant: 25).isActive = true
-            
-        }
-
-        func setContents(article: Article) {
-            
-            textLabel?.text = article.description
-            imageView?.image = UIImage(named: article.urlToImage!)
-            imageView?.translatesAutoresizingMaskIntoConstraints = false
-            imageView?.heightAnchor.constraint(equalToConstant: 60).isActive = true
-            imageView?.widthAnchor.constraint(equalToConstant: 60).isActive = true
-            imageView?.centerYAnchor.constraint(equalTo: background.centerYAnchor).isActive = true
-            
-            textLabel?.translatesAutoresizingMaskIntoConstraints = false
-            textLabel?.centerYAnchor.constraint(equalTo: background.centerYAnchor).isActive = true
-            textLabel?.leadingAnchor.constraint(equalTo: imageView!.trailingAnchor, constant: 25).isActive = true
-        }
-        
     }
+    
+    var categorySelection: String? = nil
+    
+    var articleImage: UIImageView = {
+        var articleImage = UIImageView()
+        articleImage.layer.cornerRadius = 10
+        articleImage.clipsToBounds = true
+        return articleImage
+    }()
+    
+        
+    
+    override func viewDidLoad() {
+            super.viewDidLoad()
+            setup()
+            title = categorySelection!
+        }
+        
+    func setup() {
+            self.view.addSubview(section)
+            section.widthAnchor.constraint(equalTo: self.view.layoutMarginsGuide.widthAnchor, multiplier: 1.0).isActive = true
+            section.heightAnchor.constraint(equalTo: self.view.layoutMarginsGuide.heightAnchor, multiplier: 1.0).isActive = true
+            section.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+            section.centerYAnchor.constraint(equalTo: self.view.layoutMarginsGuide.centerYAnchor).isActive = true
+        }
+}
 
+extension ArticleVC: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return currentArticle.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArticlesCell", for: indexPath) as! ArticlesCell
+        let article = currentArticle[indexPath.row]
+        cell.getImage(article: currentArticle[indexPath.row])
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("selected item in row \(indexPath.row)")
+        let nextView: StoriesVC = StoriesVC()
+        nextView.url = currentArticle[indexPath.row].url
+        self.navigationController?.pushViewController(nextView, animated: true)
+            
+        }
+
+}
 
 

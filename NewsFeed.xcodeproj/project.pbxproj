@@ -22,6 +22,7 @@
 		1BDBB43824673F9300C768C9 /* ArticlesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BDBB43624673F9300C768C9 /* ArticlesCell.xib */; };
 		1BDBB43A24674F3E00C768C9 /* SecretKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDBB43924674F3E00C768C9 /* SecretKey.swift */; };
 		1BDBB43C24675D2000C768C9 /* ArticleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDBB43B24675D2000C768C9 /* ArticleVC.swift */; };
+		1BDBB43E2469003F00C768C9 /* StoriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDBB43D2469003E00C768C9 /* StoriesVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		1BDBB43624673F9300C768C9 /* ArticlesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticlesCell.xib; sourceTree = "<group>"; };
 		1BDBB43924674F3E00C768C9 /* SecretKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKey.swift; sourceTree = "<group>"; };
 		1BDBB43B24675D2000C768C9 /* ArticleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ArticleVC.swift; path = NewsFeed/Controller/ArticleVC.swift; sourceTree = SOURCE_ROOT; };
+		1BDBB43D2469003E00C768C9 /* StoriesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				1BDBB4312466400500C768C9 /* CategoriesVC.swift */,
+				1BDBB43D2469003E00C768C9 /* StoriesVC.swift */,
 				1BDBB43B24675D2000C768C9 /* ArticleVC.swift */,
 				1BDBB4332466641A00C768C9 /* LayoutView.swift */,
 			);
@@ -204,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BDBB4322466400500C768C9 /* CategoriesVC.swift in Sources */,
+				1BDBB43E2469003F00C768C9 /* StoriesVC.swift in Sources */,
 				1B3D45D22451111C00EFDA85 /* AppDelegate.swift in Sources */,
 				1B3D45D42451111C00EFDA85 /* SceneDelegate.swift in Sources */,
 				1BDBB42024639A3600C768C9 /* NetworkAPI.swift in Sources */,

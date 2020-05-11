@@ -10,7 +10,7 @@ import Foundation
 
 class NetworkAPI {
     
-    let apiKey = SecretKey()
+    let apiKey = "\(SecretKey())"
     let baseURL = "https://newsapi.org/v2/"
     let urlSession = URLSession.shared
     
@@ -20,6 +20,8 @@ class NetworkAPI {
     enum networkCalls {
         case articles
         case category(category: String)
+        case sources
+        case everything(q: String)
         
         func getHTTPMethod() -> String {
             return "GET"
@@ -29,6 +31,10 @@ class NetworkAPI {
              switch self {
              case .category, .articles:
                  return "top-headlines"
+             case .sources:
+                return "sources"
+             case .everything:
+                return "everything"
              }
          }
          
@@ -53,7 +59,12 @@ class NetworkAPI {
                      "country": "us",
                      "category": category
                  ]
-             }
+             case .sources:
+                return ["language": "en"]
+                
+             case .everything(let qInput):
+                return ["q": qInput]
+            }
          }
         
         func parametersToString() -> String {
@@ -74,7 +85,7 @@ class NetworkAPI {
          case noData
      }
     
-    func newsRequest(for networkCall: networkCalls) -> URLRequest {
+    private func newsRequest(for networkCall: networkCalls) -> URLRequest {
         // grab the parameters from the endpoint and convert them into a string
         let stringParams = networkCall.parametersToString()
         // get the path of the endpoint
@@ -85,14 +96,14 @@ class NetworkAPI {
         // build the request
         var request = URLRequest(url: fullURL)
         request.httpMethod = networkCall.getHTTPMethod()
-        request.allHTTPHeaderFields = networkCall.getHeaders(secretKey: "secretKey")
+        request.allHTTPHeaderFields = networkCall.getHeaders(secretKey: "apiKey")
         print("\(String(describing: request.allHTTPHeaderFields))")
         return request
     }
     
     func getArticles(category: String, _ completion: @escaping (Result<[Article]>) -> Void) {
         let articlesRequest = newsRequest(for: .category(category: category))
-        print("\(articlesRequest)")
+        
         let task = urlSession.dataTask(with: articlesRequest) { data, response, error in
             // Check for errors.
             if let error = error {

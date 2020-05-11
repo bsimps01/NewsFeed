@@ -11,14 +11,7 @@ import UIKit
 
 class CategoriesVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    let data: [NewsSource] = [NewsSource(name: "General", category: "General"),
-                              NewsSource(name: "Entertainment", category: "Entertainment"),
-                              NewsSource(name: "Sports", category: "Sports"),
-                              NewsSource(name: "Science", category: "Science"),
-                              NewsSource(name: "Health", category: "Health"),
-                              NewsSource(name: "Technology", category: "Technology"),
-                              NewsSource(name: "Business", category: "Business")
-    ]
+    let data = ["Business", "Health", "General", "Technology","Entertainment", "Science", "Sports"]
     
     lazy var collectionView: UICollectionView = {
         let lv = LayoutView()
@@ -45,7 +38,7 @@ class CategoriesVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
-        cell.setUp(with: data[indexPath.row])
+        cell.categoryLabel.text = data[indexPath.row]
         cell.backgroundColor = .blue
         return cell
     }
@@ -59,8 +52,8 @@ class CategoriesVC: UIViewController, UICollectionViewDataSource, UICollectionVi
                 switch result {
                 case let .success(articles):
                     let nextView = ArticleVC()
-                    nextView.articles = articles
-                    nextView.category = self.data[indexPath.row]
+                    nextView.currentArticle = articles
+                    nextView.categorySelection = self.data[indexPath.row]
                     
                     self.navigationController?.pushViewController(nextView, animated: true)
                     

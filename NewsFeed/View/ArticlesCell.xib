@@ -19,11 +19,11 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j50-CY-TSj">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="175"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="200" id="BAq-bf-qAv"/>
+                            <constraint firstAttribute="width" constant="200" id="2Jn-8S-G7C"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Headline" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mtb-PA-ebE">
-                        <rect key="frame" x="215" y="0.0" width="373" height="175"/>
+                        <rect key="frame" x="215" y="0.0" width="89" height="175"/>
                         <fontDescription key="fontDescription" type="system" pointSize="23"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -34,7 +34,6 @@
                 <constraint firstItem="j50-CY-TSj" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="5Sa-Nr-S0O"/>
                 <constraint firstItem="Mtb-PA-ebE" firstAttribute="leading" secondItem="j50-CY-TSj" secondAttribute="trailing" constant="15" id="62H-Vf-SId"/>
                 <constraint firstItem="Mtb-PA-ebE" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="XYB-tg-IW3"/>
-                <constraint firstAttribute="trailing" secondItem="Mtb-PA-ebE" secondAttribute="trailing" id="cpE-cm-vHS"/>
                 <constraint firstItem="j50-CY-TSj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="f2X-ds-HZN"/>
                 <constraint firstAttribute="bottom" secondItem="j50-CY-TSj" secondAttribute="bottom" id="kf0-24-eHV"/>
                 <constraint firstAttribute="bottom" secondItem="Mtb-PA-ebE" secondAttribute="bottom" id="yzo-5r-1MS"/>
@@ -42,8 +41,8 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="588" height="175"/>
             <connections>
-                <outlet property="headlineLabel" destination="Mtb-PA-ebE" id="k6c-ec-VQQ"/>
-                <outlet property="imageView" destination="j50-CY-TSj" id="qsJ-x7-p6n"/>
+                <outlet property="headlineLabel" destination="Mtb-PA-ebE" id="tZW-K3-xkZ"/>
+                <outlet property="imageView" destination="j50-CY-TSj" id="h4R-l4-Yy0"/>
             </connections>
             <point key="canvasLocation" x="317.39130434782612" y="-34.486607142857139"/>
         </collectionViewCell>
