@@ -18,11 +18,11 @@
 		1BDBB42D24663A3700C768C9 /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BDBB42B24663A3700C768C9 /* CategoryCell.xib */; };
 		1BDBB4322466400500C768C9 /* CategoriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDBB4312466400500C768C9 /* CategoriesVC.swift */; };
 		1BDBB4342466641A00C768C9 /* LayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDBB4332466641A00C768C9 /* LayoutView.swift */; };
-		1BDBB43724673F9300C768C9 /* ArticlesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDBB43524673F9200C768C9 /* ArticlesCell.swift */; };
-		1BDBB43824673F9300C768C9 /* ArticlesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BDBB43624673F9300C768C9 /* ArticlesCell.xib */; };
 		1BDBB43A24674F3E00C768C9 /* SecretKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDBB43924674F3E00C768C9 /* SecretKey.swift */; };
 		1BDBB43C24675D2000C768C9 /* ArticleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDBB43B24675D2000C768C9 /* ArticleVC.swift */; };
 		1BDBB43E2469003F00C768C9 /* StoriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDBB43D2469003E00C768C9 /* StoriesVC.swift */; };
+		1BDBB441246B84FB00C768C9 /* ArticlesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDBB43F246B84FB00C768C9 /* ArticlesCell.swift */; };
+		1BDBB442246B84FB00C768C9 /* ArticlesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BDBB440246B84FB00C768C9 /* ArticlesCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,11 +38,11 @@
 		1BDBB42B24663A3700C768C9 /* CategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
 		1BDBB4312466400500C768C9 /* CategoriesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesVC.swift; sourceTree = "<group>"; };
 		1BDBB4332466641A00C768C9 /* LayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutView.swift; sourceTree = "<group>"; };
-		1BDBB43524673F9200C768C9 /* ArticlesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesCell.swift; sourceTree = "<group>"; };
-		1BDBB43624673F9300C768C9 /* ArticlesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticlesCell.xib; sourceTree = "<group>"; };
 		1BDBB43924674F3E00C768C9 /* SecretKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKey.swift; sourceTree = "<group>"; };
 		1BDBB43B24675D2000C768C9 /* ArticleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ArticleVC.swift; path = NewsFeed/Controller/ArticleVC.swift; sourceTree = SOURCE_ROOT; };
 		1BDBB43D2469003E00C768C9 /* StoriesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesVC.swift; sourceTree = "<group>"; };
+		1BDBB43F246B84FB00C768C9 /* ArticlesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesCell.swift; sourceTree = "<group>"; };
+		1BDBB440246B84FB00C768C9 /* ArticlesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticlesCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,8 +103,8 @@
 			children = (
 				1BDBB42A24663A3700C768C9 /* CategoryCell.swift */,
 				1BDBB42B24663A3700C768C9 /* CategoryCell.xib */,
-				1BDBB43524673F9200C768C9 /* ArticlesCell.swift */,
-				1BDBB43624673F9300C768C9 /* ArticlesCell.xib */,
+				1BDBB43F246B84FB00C768C9 /* ArticlesCell.swift */,
+				1BDBB440246B84FB00C768C9 /* ArticlesCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -192,7 +192,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BDBB43824673F9300C768C9 /* ArticlesCell.xib in Resources */,
+				1BDBB442246B84FB00C768C9 /* ArticlesCell.xib in Resources */,
 				1BDBB42D24663A3700C768C9 /* CategoryCell.xib in Resources */,
 				1B3D45DE2451111E00EFDA85 /* LaunchScreen.storyboard in Resources */,
 				1B3D45DB2451111E00EFDA85 /* Assets.xcassets in Resources */,
@@ -210,9 +210,9 @@
 				1BDBB43E2469003F00C768C9 /* StoriesVC.swift in Sources */,
 				1B3D45D22451111C00EFDA85 /* AppDelegate.swift in Sources */,
 				1B3D45D42451111C00EFDA85 /* SceneDelegate.swift in Sources */,
+				1BDBB441246B84FB00C768C9 /* ArticlesCell.swift in Sources */,
 				1BDBB42024639A3600C768C9 /* NetworkAPI.swift in Sources */,
 				1BDBB43A24674F3E00C768C9 /* SecretKey.swift in Sources */,
-				1BDBB43724673F9300C768C9 /* ArticlesCell.swift in Sources */,
 				1BDBB42C24663A3700C768C9 /* CategoryCell.swift in Sources */,
 				1BDBB4342466641A00C768C9 /* LayoutView.swift in Sources */,
 				1BDBB423246518CA00C768C9 /* NewsStructs.swift in Sources */,

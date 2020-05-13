@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 
 class ArticleVC: UIViewController {
-        
+    
     static var identifier = "ArticleCell"
     
     let networkAPI = NetworkAPI()
@@ -23,54 +23,49 @@ class ArticleVC: UIViewController {
     
     var categorySelection: String? = nil
     
-    var articleImage: UIImageView = {
-        var articleImage = UIImageView()
-        articleImage.layer.cornerRadius = 10
-        articleImage.clipsToBounds = true
-        return articleImage
-    }()
-    
-        
     
     override func viewDidLoad() {
-            super.viewDidLoad()
-            setup()
-            title = categorySelection!
-        }
-        
+        super.viewDidLoad()
+        setup()
+        title = categorySelection!
+    }
+    
     func setup() {
-            self.view.addSubview(section)
-            section.widthAnchor.constraint(equalTo: self.view.layoutMarginsGuide.widthAnchor, multiplier: 1.0).isActive = true
-            section.heightAnchor.constraint(equalTo: self.view.layoutMarginsGuide.heightAnchor, multiplier: 1.0).isActive = true
-            section.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-            section.centerYAnchor.constraint(equalTo: self.view.layoutMarginsGuide.centerYAnchor).isActive = true
-        }
+        self.view.addSubview(section)
+        section.translatesAutoresizingMaskIntoConstraints = false
+        section.dataSource = self
+        section.delegate = self
+        section.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+        section.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
+        section.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        section.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        section.register(UINib(nibName: "ArticlesCell", bundle: nil), forCellReuseIdentifier: "ArticlesCell")
+    }
 }
 
-extension ArticleVC: UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+extension ArticleVC: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentArticle.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArticlesCell", for: indexPath) as! ArticlesCell
-        let article = currentArticle[indexPath.row]
-        cell.getImage(article: currentArticle[indexPath.row])
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ArticlesCell", for: indexPath) as! ArticlesCell
+        //let article = currentArticle[indexPath.row]
+        cell.article = currentArticle[indexPath.row]
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("selected item in row \(indexPath.row)")
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+                print("selected item in row \(indexPath.row)")
         let nextView: StoriesVC = StoriesVC()
         nextView.url = currentArticle[indexPath.row].url
         self.navigationController?.pushViewController(nextView, animated: true)
-            
-        }
-
+    }
+    
 }
 
 

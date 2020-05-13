@@ -8,10 +8,6 @@
 
 import Foundation
 
-class SecretKey {
     
-    var apiKey = {
-        "18ef65e0ff4945a99d5cc4d7dc20ce26"
-    }
+    var secretKey = "18ef65e0ff4945a99d5cc4d7dc20ce26"
     
-}

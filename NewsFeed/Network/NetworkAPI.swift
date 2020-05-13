@@ -10,7 +10,7 @@ import Foundation
 
 class NetworkAPI {
     
-    let apiKey = "\(SecretKey())"
+    let apiKey = secretKey
     let baseURL = "https://newsapi.org/v2/"
     let urlSession = URLSession.shared
     
@@ -42,7 +42,7 @@ class NetworkAPI {
              return [
                  "Accept": "application/json",
                  "Content-Type": "application/json",
-                 "Authorization": "X-Api-Key \(SecretKey())",
+                 "Authorization": "X-Api-Key \(secretKey)",
                  "Host": "newsapi.org"
              ]
          }
@@ -96,7 +96,7 @@ class NetworkAPI {
         // build the request
         var request = URLRequest(url: fullURL)
         request.httpMethod = networkCall.getHTTPMethod()
-        request.allHTTPHeaderFields = networkCall.getHeaders(secretKey: "apiKey")
+        request.allHTTPHeaderFields = networkCall.getHeaders(secretKey: "\(apiKey)")
         print("\(String(describing: request.allHTTPHeaderFields))")
         return request
     }

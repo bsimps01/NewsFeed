@@ -65,6 +65,10 @@ class CategoriesVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             }
             
         }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        <#code#>
+    }
         
         
     }
