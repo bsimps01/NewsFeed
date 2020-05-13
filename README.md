@@ -7,6 +7,7 @@ An IOS App that takes data from the News API that contains headlines of the late
 ## Features
 
 - Different sections of categories that store each set of stories respectively
+<center>
 
 ![alt text](https://github.com/bsimps01/NewsFeed/blob/master/NewsFeed/NewsAPI1.png)
 
@@ -17,6 +18,8 @@ An IOS App that takes data from the News API that contains headlines of the late
 - The listed news source's result pulled from the News API
 
 ![alt text](https://github.com/bsimps01/NewsFeed/blob/master/NewsFeed/NewsAPI3.png)
+
+</center>
 
 ## Programming
 
