@@ -13,6 +13,21 @@ class CategoriesVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     let data = ["Business", "Health", "General", "Technology","Entertainment", "Science", "Sports"]
     
+    var selectedIndexPath: IndexPath? {
+        didSet {
+            var indexPaths: [IndexPath] = []
+            if let selectedIndexPath = selectedIndexPath {
+                indexPaths.append(selectedIndexPath)
+            }
+            if let oldValue = oldValue {
+                indexPaths.append(oldValue)
+            }
+            collectionView.performBatchUpdates({
+                self.collectionView.reloadItems(at: indexPaths)
+            })
+        }
+    }
+    
     lazy var collectionView: UICollectionView = {
         let lv = LayoutView()
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: lv)
@@ -37,13 +52,42 @@ class CategoriesVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
         cell.categoryLabel.text = data[indexPath.row]
-        cell.backgroundColor = .blue
+        if indexPath == selectedIndexPath{
+            cell.backgroundColor = .cyan
+        }else{
+            cell.backgroundColor = .green
+        }
         return cell
+        
     }
+
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let cell: CategoryCell = collectionView.cellForItem(at: indexPath) as! CategoryCell
+//        cell.backgroundColor = .green
+//        print("selected item in row \(indexPath.row)")
+//        let categorySelection = data[indexPath.row]
+//        NetworkAPI.shared.getArticles(category: categorySelection){ result in
+//                switch result {
+//                case let .success(articles):
+//                    let nextView = ArticleVC()
+//                    nextView.currentArticle = articles
+//                    nextView.categorySelection = self.data[indexPath.row]
+//
+//                    self.navigationController?.pushViewController(nextView, animated: true)
+//
+//                case let .failure(error):
+//                    print(error)
+//                }
+//                print(result)
+//
+//            }
+//
+//        }
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         let cell: CategoryCell = collectionView.cellForItem(at: indexPath) as! CategoryCell
         cell.backgroundColor = .green
         print("selected item in row \(indexPath.row)")
@@ -61,14 +105,12 @@ class CategoriesVC: UIViewController, UICollectionViewDataSource, UICollectionVi
                     print(error)
                 }
                 print(result)
-                
             }
-            
-        }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        <#code#>
-    }
-        
-        
+                if selectedIndexPath == indexPath {
+                  selectedIndexPath = nil
+                } else {
+                  selectedIndexPath = indexPath
+                }
+                  return false
+            }
     }

@@ -15,10 +15,9 @@ class ArticlesCell: UITableViewCell {
     
     var article: Article? = nil {
         didSet {
-            //getImage(article: article!)
             headLineLabel.text = article?.title
             headLineLabel.textColor = .black
-            
+            getImage(article: article!)
         }
     }
     
@@ -36,19 +35,13 @@ class ArticlesCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
-
-    
-    
-    
     func getImage(article: Article) {
         if let imageURL = article.urlToImage {
             articleImageView.kf.setImage(with: URL(string: imageURL)) { result in
                 switch result {
                 case .success(let value):
-                    self.trailingAnchor.constraint(equalTo: self.articleImageView.trailingAnchor).isActive = true
                     print(value.image)
                 case .failure(let error):
-                    self.trailingAnchor.constraint(equalTo: self.articleImageView.trailingAnchor).isActive = true
                     print(error)
                 }
             }
