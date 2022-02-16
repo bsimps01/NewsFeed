@@ -8,10 +8,15 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 class CategoriesVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     let data = ["Business", "Health", "General", "Technology","Entertainment", "Science", "Sports"]
+    
+    let images = ["business", "health", "general", "technology", "entertainment", "science", "sports"]
+    
+    var articleImageView: UIImageView!
     
     var selectedIndexPath: IndexPath? {
         didSet {
@@ -24,6 +29,25 @@ class CategoriesVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             }
             collectionView.performBatchUpdates({
                 self.collectionView.reloadItems(at: indexPaths)
+            })
+        }
+    }
+    
+    var article: Article? = nil {
+        didSet {
+            getImage(article: article!)
+        }
+    }
+    
+    func getImage(article: Article) {
+        if let imageURL = article.urlToImage {
+            articleImageView.kf.setImage(with: URL(string: imageURL), completionHandler: { result in
+                switch result {
+                case .success(let value):
+                    print(value.image)
+                case .failure(let error):
+                    print(error)
+                }
             })
         }
     }
@@ -43,7 +67,11 @@ class CategoriesVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(collectionView)
+        //view.addSubview(articleImageView)
         navigationItem.title = "News Feed"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.barStyle = .default
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
     
     
@@ -55,6 +83,7 @@ class CategoriesVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
         cell.categoryLabel.text = data[indexPath.row]
+
         if indexPath == selectedIndexPath{
             cell.backgroundColor = .cyan
         }else{

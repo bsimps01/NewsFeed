@@ -35,16 +35,17 @@ class ArticlesCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
+    
     func getImage(article: Article) {
         if let imageURL = article.urlToImage {
-            articleImageView.kf.setImage(with: URL(string: imageURL)) { result in
+            articleImageView.kf.setImage(with: URL(string: imageURL), completionHandler: { result in
                 switch result {
                 case .success(let value):
                     print(value.image)
                 case .failure(let error):
                     print(error)
                 }
-            }
+            })
         }
     }
     

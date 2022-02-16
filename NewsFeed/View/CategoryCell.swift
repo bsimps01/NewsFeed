@@ -7,12 +7,19 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CategoryCell: UICollectionViewCell {
     
     static var identifier: String = "CategoryCell"
 
     @IBOutlet weak var categoryLabel: UILabel!
+    
+    var category: Article? = nil {
+        didSet {
+            categoryLabel.textColor = .white
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

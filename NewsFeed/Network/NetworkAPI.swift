@@ -75,8 +75,8 @@ class NetworkAPI {
         }
     }
     
-    enum Result<call> {
-         case success(call)
+    enum Result<T> {
+         case success(T)
          case failure(Error)
      }
      

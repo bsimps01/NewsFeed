@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,6 +25,7 @@
                     </label>
                 </subviews>
             </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="71S-bF-mqA" secondAttribute="bottom" id="D9l-Ga-a0o"/>
                 <constraint firstAttribute="bottom" secondItem="71S-bF-mqA" secondAttribute="bottom" id="FwN-QV-8pm"/>
@@ -34,7 +36,6 @@
                 <constraint firstItem="71S-bF-mqA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="g5s-sI-DSu"/>
                 <constraint firstItem="71S-bF-mqA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="w49-sX-a3C"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="194" height="164"/>
             <connections>
                 <outlet property="categoryLabel" destination="71S-bF-mqA" id="89P-8X-Pqt"/>
